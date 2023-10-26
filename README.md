@@ -116,11 +116,11 @@ Dealing with a large number of items, such as posts, requires implementing pagin
     ```php
     $posts = Post::latest()->filter(
         request(['search', 'category', 'author'])
-    )->paginate(6);
+    )->paginate(6)->withQueryString()
 
     $posts = Post::latest()->filter(
         request(['search', 'category', 'author'])
-    )->simplePaginate();
+    )->simplePaginate()->withQueryString()
     ```
 
     In this code, `paginate(6)` specifies that you want to display six posts per page. You can adjust this number according to your design and content.
