@@ -129,3 +129,11 @@ Route::get('/', function () {
 # php artisan tinker
 
 # \App\Models\Post::factory(50)->create();
+
+# http://127.0.0.1:8000/?page=3
+
+        return view('posts.index', [
+            'posts' => Post::latest()->filter(
+                request(['search', 'category', 'author'])
+            )->paginate(6)
+        ]);
